@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default class IssueAdd extends React.Component {
   constructor() {
     super();
@@ -28,8 +30,4 @@ export default class IssueAdd extends React.Component {
       </div>
     )
   }
-
 }
-
-  
-
