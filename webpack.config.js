@@ -2,11 +2,11 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: './src/App.jsx',
-    vendor: ['react','react-dom','whatwg-fetch','babel-polyfill'],
+    app: ['./src/App.jsx'],
+    vendor: ['react','react-dom','whatwg-fetch','babel-polyfill', 'react-router'],
   },
   output: {
-    path: './static',
+    path: __dirname + './static',
     filename: 'app.bundle.js'
   },
   plugins: [
@@ -31,5 +31,6 @@ module.exports = {
         target: 'http://localhost:3000'
       }
     }
-  }
+  },
+  devtool: 'source-map'
 };

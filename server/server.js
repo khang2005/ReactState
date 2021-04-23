@@ -1,9 +1,11 @@
-'use strict'
+import SourceMapSupport from 'source-map-support';
+SourceMapSupport.install();
+import 'babel-polyfill';
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const MongoClient = require('mongodb').MongoClient;
-const Issue = require('./issue.js');
+import express from 'express';
+import bodyParser from 'body-parser';
+import { MongoClient } from 'mongodb';
+import Issue from './issue.js';
 
 const app = express();
 app.use(express.static('static'));
@@ -43,10 +45,10 @@ app.post('/api/issues', (req, res) => {
 
 let db;
 MongoClient.connect('mongodb://localhost/issuetracker').then(connection => {
+  db = connection;
   app.listen(3000, () => {
     console.log('App started on port 3000');
   });
-  db = connection;
 }).catch(error => {
   console.log('ERROR:', error);
 });
